@@ -24,7 +24,7 @@ include_once "_navbar.php";
 </form>
 </div>
 <div class="card-body">
-<form >
+<form action="sign-up_post.php" method="POST">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
