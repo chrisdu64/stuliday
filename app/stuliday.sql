@@ -24,4 +24,6 @@ CREATE TABLE stuliday.location (
     availablity DATE NOT NULL
 );
 
+ALTER TABLE stuliday.user ADD UNIQUE(`username`);
+
 

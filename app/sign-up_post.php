@@ -5,7 +5,10 @@ require "includes/connect.php";
 if (in_array('', $_POST)) {
     header('Location:sign-up.php?error=missingInput');
     exit();
-} else {   
+} else {
+    $lastname = htmlspecialchars($_POST['lastname']);   
+    $firstname = htmlspecialchars($_POST['firstname']);   
+    $adress = htmlspecialchars($_POST['adress']);   
     $email = htmlspecialchars($_POST['email']);
     $username = htmlspecialchars(trim($_POST['username']));
     $password = htmlspecialchars($_POST['password']);
@@ -15,7 +18,8 @@ if (in_array('', $_POST)) {
 $verifEmail = "SELECT count(*) FROM user WHERE email = :email OR username= :username";
 $reqVerifEmail = $connexion->prepare($verifEmail);
 $reqVerifEmail ->bindValue(':email', $email, PDO::PARAM_STR);
-$reqVerifUsername->execute();
+$reqVerifEmail ->bindValue(':username', $username, PDO::PARAM_STR);
+$reqVerifEmail->execute();
 
 $resultatVerifEmail = $reqVerifEmail->fetchColumn();
 
@@ -31,8 +35,12 @@ if ($password !== $password2) {
 
 $password = password_hash($password, PASSWORD_DEFAULT);
 
-$insertUser = "INSERT INTO user (email,username,password) VALUES (:email,:username,:password)";
+$insertUser = "INSERT INTO user (lastname,firstname,adress,email,username,password) VALUES (:lastname,:firstname,:adress,:email,:username,:password)";
 $reqInsertUser = $connexion->prepare($insertUser);
+$reqInsertUser->bindValue(':lastname', $lastname, PDO::PARAM_STR);
+$reqInsertUser->bindValue(':firstname', $firstname, PDO::PARAM_STR);
+$reqInsertUser->bindValue(':adress', $adress, PDO::PARAM_STR);
+$reqInsertUser->bindValue(':username', $username, PDO::PARAM_STR);
 $reqInsertUser->bindValue(':email', $email, PDO::PARAM_STR);
 $reqInsertUser->bindValue(':password', $password, PDO::PARAM_STR);
 
