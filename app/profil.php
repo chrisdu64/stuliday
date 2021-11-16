@@ -1,13 +1,17 @@
 <?php
 
-include_once "_navbar.php";
+$auth = true.
+require 'includes/config.php';
+require 'includes/connect.php';
+include_once '_navbar.php';
 ?>
 
-
 <body>
-<div class="w-50 mx-auto mt-4">
 
-<form action="sign-up_post.php" method="POST">
+<section>
+
+<div>
+<form action="profil_post.php" method="POST">
   <div class="mb-3">
     <label for="lastname" class="form-label">Nom</label>
     <input type="text" class="form-control" id="lastname" name="lastname">    
@@ -22,31 +26,28 @@ include_once "_navbar.php";
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">    
   </div>
   <div class="mb-3">
-    <label for="username" class="form-label">Pseudo</label>
+    <label for="username" class="form-label">pseudo</label>
     <input type="text" class="form-control" id="username" name="username">    
   </div>
   <div class="mb-3">
     <label for="password" class="form-label">Mot de passe</label>
     <input type="password" class="form-control" id="password" name="password">
   </div>
-  <div class="mb-3">
-    <label for="password2" class="form-label">Confirmez le mot de passe</label>
-    <input type="password" class="form-control" id="password2" name="password2">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
-  </div>
-  <button type="submit" class="btn btn-primary">S'inscrire</button>
+  
+  <button type="submit" class="btn btn-primary">Mettre à jour</button>
 </form>
 </div>
+<a class="btn btn-primary" href="add-annonces.php" role="button">Publier une nouvelle annonce</a>
+<a class="btn btn-primary" href="#" role="button">Voir mes annonces()</a>
+<a class="btn btn-primary" href="#" role="button">Voir mes réservations()</a>
+
+<div>
+
+</div>
+<a class="btn btn-primary" href="#" role="button">Retour aux annonces</a>
+</section>
+
 </body>
-
-<?php
-include_once "_footer.php";
-?>
-
