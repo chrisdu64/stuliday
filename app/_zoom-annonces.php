@@ -8,9 +8,8 @@ $reqViewAnnonce->bindValue(':location_id',$id);
 $reqViewAnnonce->execute();
 $annonce = $reqViewAnnonce->fetch();
 if(empty($annonce)){
-    echo "Erreur";
-    echo '<meta http-equiv="refresh" content="0;URL=index.php?error=noId">';
-    exit();
-    }
+    header('Location:index.php?error=noId');
+        exit();
+}
 
 ?>

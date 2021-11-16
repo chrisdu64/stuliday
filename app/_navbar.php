@@ -23,7 +23,7 @@
           <a class="nav-link" href="index.php">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Annonces</a>
+          <a class="nav-link" href="annonces.php">Annonces</a>
         </li>
         <?php
         if ($user){

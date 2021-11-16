@@ -49,9 +49,9 @@ if (isset($_GET['success'])) {
   <button type="submit" class="btn btn-primary">Mettre à jour</button>
 </form>
 </div>
-<a class="btn btn-primary" href="add-annonces.php" role="button">Publier une nouvelle annonce</a>
-<a class="btn btn-primary" href="#" role="button">Voir mes annonces()</a>
-<a class="btn btn-primary" href="#" role="button">Voir mes réservations()</a>
+<a class="btn btn-primary" href="add-annonces.php" >Publier une nouvelle annonce</a>
+<a class="btn btn-primary" href="#" >Voir mes annonces()</a>
+<a class="btn btn-primary" href="#" >Voir mes réservations()</a>
 
 <div>
 
