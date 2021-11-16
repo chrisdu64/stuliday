@@ -4,15 +4,19 @@ $auth = true;
 require 'includes/config.php';
 require 'includes/connect.php';
 
-if (empty($_POST['name']) || empty($_POST['capacity']) || empty($_POST['country']) || empty($_POST['price']) || empty($_POST['availability'])) {
+// echo '<pre>';
+// var_dump($_FILES);
+// echo '</pre>';
+
+if (empty($_POST['type']) || empty($_POST['capacity']) || empty($_POST['country']) || empty($_POST['price']) || empty($_POST['availablity'])) {
     header('Location:add-annonces.php?error=missingInput');
     exit();
 } else {
-    $name = htmlspecialchars(trim($_POST['name']));
+    $type = htmlspecialchars(trim($_POST['type']));
     $capacity = htmlspecialchars(floatval($_POST['capacity']));
     $country = htmlspecialchars(trim($_POST['country']));
     $price = htmlspecialchars(floatval($_POST['price']));
-    $availability = htmlspecialchars(floatval($_POST['availability']));
+    $availablity = htmlspecialchars(trim($_POST['availablity']));
 
     if (!empty($_POST['location_adress'])) {
         $location_adress = htmlspecialchars(trim($_POST['location_adress']));
@@ -26,13 +30,13 @@ if (empty($_POST['name']) || empty($_POST['capacity']) || empty($_POST['country'
     }
 
     if (empty($_FILES['image']['name'])) {
-        $imagePath = 'public/uploads/noimg.png';
+        $imagePath = 'uploads/wait.jpg';
         $image = null;
     }
 }
 
-if (null !== $availability && $availability <= date('Y-m-d')) {
-    header('Location:add-products.php?error=pastAvailability');
+if (null !== $availablity && $availablity <= date('Y-m-d')) {
+    header('Location:add-annonces.php?error=pastAvailablity');
     exit();
 }
 
@@ -42,7 +46,7 @@ if ($image) {
     $check_ext = strtolower(substr(strrchr($image['name'], '.'), 1));
 
     if (!in_array($check_ext, $valid_ext)) {
-        header('Location:add-products.php?error=wrongFormat');
+        header('Location:add-annonces.php?error=wrongFormat');
         exit();
     }
 
@@ -52,28 +56,28 @@ if ($image) {
 
     if (!move_uploaded_file($image['tmp_name'], $imagePath)) {
         if (!in_array($check_ext, $valid_ext)) {
-            header('Location:add-products.php?error=unknownError');
+            header('Location:add-annonces.php?error=unknownError');
             exit();
         }
     }
 }
 
-$insertAnnonce = 'INSERT INTO location (name,capacity,location_adress,country,description,price,image,availability) VALUES(:name,:capacity,:location_adress,:country,:description,:price,:image,:availability)';
+$insertAnnonce = 'INSERT INTO location (type,capacity,location_adress,country,description,price,image,availablity) VALUES(:type,:capacity,:location_adress,:country,:description,:price,:image,:availablity)';
 $reqInsertAnnonce = $connexion->prepare($insertAnnonce);
-$reqInsertAnnonce->bindValue(':name', $name, PDO::PARAM_STR);
+$reqInsertAnnonce->bindValue(':type', $type, PDO::PARAM_STR);
 $reqInsertAnnonce->bindValue(':capacity', $capacity);
 $reqInsertAnnonce->bindValue(':location_adress', $location_adress, PDO::PARAM_STR);
 $reqInsertAnnonce->bindValue(':country', $country, PDO::PARAM_STR);
 $reqInsertAnnonce->bindValue(':description', $description, PDO::PARAM_STR);
 $reqInsertAnnonce->bindValue(':price', $price);
 $reqInsertAnnonce->bindValue(':image', $imagePath, PDO::PARAM_STR);
-$reqInsertAnnonce->bindValue(':availability', $availability, PDO::PARAM_STR);
+$reqInsertAnnonce->bindValue(':availablity', $availablity, PDO::PARAM_STR);
 
 if ($reqInsertAnnonce->execute()) {
     header('Location:profil.php?success=addedProduct');
     exit();
 } else {
-    header('Location:add-products.php?error=unknownError');
+    header('Location:add-annonces.php?error=unknownError');
     exit();
 }
 ?>

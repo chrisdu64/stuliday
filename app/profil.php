@@ -4,6 +4,15 @@ $auth = true.
 require 'includes/config.php';
 require 'includes/connect.php';
 include_once '_navbar.php';
+
+$alert = false;
+if (isset($_GET['success'])) {
+  $alert = true;
+  if ('addedProduct' == $_GET['success']) {
+      $type = 'success';
+      $message = 'Votre annonce a bien été ajoutée';
+  }
+}
 ?>
 
 <body>

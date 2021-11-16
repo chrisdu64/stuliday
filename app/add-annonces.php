@@ -12,7 +12,7 @@ if (isset($_GET["error"])) {
         $type = "secondary";
         $message = "Les champs requis sont vides";
     }
-    if ($_GET['error'] == "pastAvailability") {
+    if ($_GET['error'] == "pastAvailablity") {
         $type = "secondary";
         $message = "La date de réservation est trop proche.";
     }
@@ -31,11 +31,11 @@ if (isset($_GET["error"])) {
     <form action="add-annonces_post.php" method="post" class="container" enctype="multipart/form-data">
         <?php echo $alert ? "<div class='alert alert-{$type} mt-2'>{$message}</div>" : ''; ?>
         <div class="mb-3">
-            <label for="name" class="form-label">Type de bien</label>
-            <input type="text" class="form-control" id="name" name="name" required>    
+            <label for="type" class="form-label">Type de bien*</label>
+            <input type="text" class="form-control" id="type" name="type" required>    
         </div>
         <div class="mb-3">
-            <label for="capacity" class="form-label">Capacité</label>
+            <label for="capacity" class="form-label">Capacité*</label>
             <input type="number" class="form-control" id="capacity" min="1" name="capacity" required>    
         </div>
         <div class="mb-3">
@@ -43,7 +43,7 @@ if (isset($_GET["error"])) {
             <input type="text" class="form-control" id="location_adress" name="location_adress">    
         </div>
         <div class="mb-3">
-            <label for="Country" class="form-label">Pays</label>
+            <label for="Country" class="form-label">Pays*</label>
             <input type="text" class="form-control" id="Country" name="Country" required>    
         </div>
         <div class="mb-3">
@@ -51,16 +51,16 @@ if (isset($_GET["error"])) {
             <textarea class="form-control" id="description" rows="3" name="description"></textarea>
         </div>
         <div class="mb-3">
-            <label for="price" class="form-label">Prix du séjour</label>
-            <input type="number" min="0.01" step="0.1" class="form-control" id="price" name="price" required>
+            <label for="price" class="form-label">Prix du séjour*</label>
+            <input type="number" min="1" step="0.1" class="form-control" id="price" name="price" required>
         </div>
         <div class="mb-3">
             <label for="formFile" class="form-label">Image de la location</label>
             <input class="form-control" type="file" id="formFile" accept=".png,.jpg,.jpeg" name="image">
         </div>
         <div class="mb-3">
-            <label for="availability" class="form-label">Date limite de consommation/d'usage optimal</label>
-            <input type="date" class="form-control" id="availability" name="availability" required>
+            <label for="availablity" class="form-label">Date de début du séjour*</label>
+            <input type="date" class="form-control" id="availablity" name="availablity" required>
         </div>
 
         <div class="mb-3">
@@ -70,3 +70,6 @@ if (isset($_GET["error"])) {
     </form>
 
 </main>
+<?php
+include_once '_footer.php';
+?>
