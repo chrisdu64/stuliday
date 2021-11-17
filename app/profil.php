@@ -5,12 +5,23 @@ require 'includes/config.php';
 require 'includes/connect.php';
 include_once '_navbar.php';
 
+
 $alert = false;
-if (isset($_GET['success'])) {
+if (isset($_GET['error'])) {
   $alert = true;
+  if ($_GET['error'] == "unknownError") {
+    $type = "warning";
+    $message = "Une erreur s'est produite, nous nous excusons de la gêne occasionnée. Veuillez contacter l'administrateur du site, merci.";
+}}
+if (isset($_GET['success'])) {
+  $alert = true;  
   if ('addedProduct' == $_GET['success']) {
       $type = 'success';
       $message = 'Votre annonce a bien été ajoutée';
+  }
+  if ('modifAnnonce' == $_GET['success']) {
+      $type = 'success';
+      $message = 'Votre annonce a bien été modifiée';
   }
 }
 ?>
@@ -18,7 +29,7 @@ if (isset($_GET['success'])) {
 <body>
 
 <section>
-
+<?php echo $alert ? "<div class='container mt-4 text-center p-2 alert alert-{$type} mt-2'>{$message}</div>" : ''; ?>
 <div>
 <form action="profil_post.php" method="POST">
   <div class="mb-3">
@@ -50,7 +61,7 @@ if (isset($_GET['success'])) {
 </form>
 </div>
 <a class="btn btn-primary" href="add-annonces.php" >Publier une nouvelle annonce</a>
-<a class="btn btn-primary" href="#" >Voir mes annonces()</a>
+<a class="btn btn-primary" href="annonces.php" >Voir mes annonces()</a>
 <a class="btn btn-primary" href="#" >Voir mes réservations()</a>
 
 <div>

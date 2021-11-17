@@ -4,14 +4,10 @@ $auth = true;
 require 'includes/config.php';
 require 'includes/connect.php';
 include_once '_navbar.php';
-include_once '_view-annonces.php';
+include_once '_zoom-annonces.php';
 
 ?>
 
-
-<?php
-foreach($annonces as $annonce){
-?>
 <div class="card m-4" style="width:30%">
     <img src="<?php echo $annonce['image']; ?>" alt="<?php echo $annonce['type']; ?>" class="img-fluid">
     <div class="card-body">
@@ -23,13 +19,14 @@ foreach($annonces as $annonce){
         <p>Votre séjour commencera le <?php echo date('d-m-Y',strtotime($annonce['availablity']));?>.</p>
         <p>Prix du séjour : <?php echo $annonce['price']; ?>€.</p>
         <hr>
+        <div class="d-flex justify-content-between">
         <a href="#" class="btn btn-success ">Choisir ce séjour</a>     
-        <a href="detail.php?id=<?php echo $annonce['location_id']; ?>" class="btn btn-info ">Détail</a>     
+        <a href="annonces.php" class="btn btn-info ">Revenir aux annonces</a>     
+        <a href="modifier-annonces.php" class="btn btn-info ">Modifier l'annonce</a>
+        </div>     
   </div>
 </div>
         
     
-<?php
-}
-?>
+
 </div>

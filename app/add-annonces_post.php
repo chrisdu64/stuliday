@@ -32,6 +32,9 @@ if (empty($_POST['type']) || empty($_POST['capacity']) || empty($_POST['country'
     if (empty($_FILES['image']['name'])) {
         $imagePath = 'uploads/wait.jpg';
         $image = null;
+        
+    }else {
+        $image = $_FILES['image'];
     }
 }
 

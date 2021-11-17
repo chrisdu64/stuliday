@@ -44,7 +44,7 @@ if (isset($_GET["error"])) {
         </div>
         <div class="mb-3">
             <label for="Country" class="form-label">Pays*</label>
-            <input type="text" class="form-control" id="Country" name="Country" required>    
+            <input type="text" class="form-control" id="Country" name="country" required>    
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
