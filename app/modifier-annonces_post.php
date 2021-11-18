@@ -8,13 +8,14 @@ require 'includes/connect.php';
 $getId = explode('=', $_SERVER['HTTP_REFERER'])[1];
 
 
+
 if (!($getId == $_POST['id'])) {
-    header("Location:edit-products.php?id=$getId&error=malformedInput");
+    header("Location:modifier-annonces.php?id=$getId&error=malformedInput");
     exit();
 }
 
 if (empty($_POST['type']) || empty($_POST['capacity']) || empty($_POST['country']) || empty($_POST['price']) || empty($_POST['availablity'])) {
-    header("Location:add-annonces.php?id=$getId&error=missingInput");
+    header("Location:modifier-annonces.php?id=$getId&error=missingInput");
     exit();
 } else {
     $type = htmlspecialchars(trim($_POST['type']));
@@ -22,6 +23,7 @@ if (empty($_POST['type']) || empty($_POST['capacity']) || empty($_POST['country'
     $country = htmlspecialchars(trim($_POST['country']));
     $price = htmlspecialchars(floatval($_POST['price']));
     $availablity = htmlspecialchars(trim($_POST['availablity']));
+    $location_id = $_POST['id'];
 
     if (!empty($_POST['location_adress'])) {
         $location_adress = htmlspecialchars(trim($_POST['location_adress']));
@@ -43,19 +45,19 @@ if (empty($_POST['type']) || empty($_POST['capacity']) || empty($_POST['country'
     }
 }
 
-$modifAnnonces = 'UPDATE location SET type=:type,capacity=:capacity,location_adress=:location_adress,contry=:country,description=:description, price=:price,image=:image,availablity=:availablity WHERE location_id=:id';
+$modifAnnonces = 'UPDATE location SET type=:type,capacity=:capacity,location_adress=:location_adress,country=:country,description=:description, price=:price,image=:image,availablity=:availablity WHERE location_id=:id';
 $reqModifAnnonces = $connexion->prepare($modifAnnonces);
 $reqModifAnnonces->bindValue(':type', $type, PDO::PARAM_STR);
 $reqModifAnnonces->bindValue(':capacity', $capacity,);
 $reqModifAnnonces->bindValue(':location_adress', $location_adress, PDO::PARAM_STR);
-$reqModifAnnonces->bindValue(':country', $name, PDO::PARAM_STR);
+$reqModifAnnonces->bindValue(':country', $country, PDO::PARAM_STR);
 $reqModifAnnonces->bindValue(':description', $description, PDO::PARAM_STR);
 $reqModifAnnonces->bindValue(':price', $price);
 $reqModifAnnonces->bindValue(':image', $imagePath, PDO::PARAM_STR);
 $reqModifAnnonces->bindValue(':availablity', $availablity, PDO::PARAM_STR);
-$reqModifAnnonces->bindValue(':id', $id);
+$reqModifAnnonces->bindValue(':id', $location_id);
 
-if ($reqEditProduct->execute()) {    
+if ($reqModifAnnonces->execute()) {    
     header("Location:profil.php?success=modifAnnonce");
     exit();
 } else {

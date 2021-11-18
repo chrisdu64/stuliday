@@ -8,6 +8,7 @@ include_once '_zoom-annonces.php';
 
 ?>
 
+
 <div class="card m-4" style="width:30%">
     <img src="<?php echo $annonce['image']; ?>" alt="<?php echo $annonce['type']; ?>" class="img-fluid">
     <div class="card-body">
@@ -22,11 +23,11 @@ include_once '_zoom-annonces.php';
         <div class="d-flex justify-content-between">
         <a href="#" class="btn btn-success ">Choisir ce séjour</a>     
         <a href="annonces.php" class="btn btn-info ">Revenir aux annonces</a>     
-        <a href="modifier-annonces.php" class="btn btn-info ">Modifier l'annonce</a>
+        <a href="modifier-annonces.php?id=<?php echo $annonce['location_id']; ?>" class="btn btn-info ">Modifier l'annonce</a>
         </div>     
   </div>
 </div>
-        
+       
     
 
 </div>

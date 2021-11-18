@@ -5,9 +5,10 @@ require 'includes/config.php';
 require 'includes/connect.php';
 include_once '_navbar.php';
 
-include_once '_view-annonces.php';
+include_once '_zoom-annonces.php';
 
 ?>
+
 
 <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ps ps--active-y">
     <div class="card container m-4 p-4">
