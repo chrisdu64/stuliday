@@ -13,7 +13,7 @@ include_once '_zoom-annonces.php';
 
 <div class="container">
     <form class="card-form" action="delete_post.php" method="POST">
-    <h3>Vous allez supprimer la ligne, êtes-vous sûr?</h3>
+    <h3>Vous allez supprimer votre location, êtes-vous sûr?</h3>
     <input type="hidden" name="id" value="<?php echo $annonce['location_id']; ?>">
     <button type="submit" class="btn btn-warning">Oui</button>
     <a href="detail.php" class="btn btn-success ">Non</a>
@@ -22,7 +22,7 @@ include_once '_zoom-annonces.php';
 
 </body>
 <?php
-include_once "../_footer.php";
+include_once "_footer.php";
 ?>
 
 </html>

@@ -25,7 +25,8 @@ include_once '_zoom-annonces.php';
             <input type="text" class="form-control" name="country" value="<?php echo $annonce['country']; ?>" />
             <hr>
             <div class="col-md-4 center">
-                <img src="<?php echo $annonce['image']; ?>" alt="<?php echo $annonce['type']; ?>" class="img-fluid">
+            <p class="text-bold">Image de la location</p>
+            <input class="form-control" type="file" id="formFile" accept=".png,.jpg,.jpeg" name="image" value="<?php echo $annonce['image']; ?>">                
             </div>
             <p class="text-bold">Description :</p>
             <textarea name="description" class="form-control" rows=3><?php echo $annonce['description']; ?></textarea>

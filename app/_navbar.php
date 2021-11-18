@@ -32,7 +32,7 @@
             <a class="nav-link" href="profil.php">Mon compte</a>
           </li>
           <li class="nav-item">        
-            <a class="nav-link" href="?logout">Se déconnecter</a>
+            <a class="nav-link btn btn-outline-secondary" href="?logout" >Se déconnecter</a>
           </li>
           <?php
         } else{

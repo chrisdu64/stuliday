@@ -24,17 +24,17 @@ if (isset($_GET["error"])) {
 <body>
 
 
-  <div class="col-11 mx-auto col-md-6">
+  <div class="mx-auto col-md-6">
       <div id="carouselExampleSlidesOnly" class="carousel slide w-100 my-md-5 my-3 px-3" data-bs-ride="carousel">
-        <div class="carousel-inner">
+        <div class="carousel-inner" style="height:550px">
           <div class="carousel-item active">
-            <img src="assets/accueil.jpg" class="d-block w-100 img-fluid " alt="...">
+            <img src="assets/accueil.jpg" class="d-block w-100 img-fluid" style="oject-fit:cover; height:50%;" alt="...">
           </div>
           <div class="carousel-item ">
-            <img src="assets/beach.jpg" class="d-block w-100 img-fluid" alt="...">
+            <img src="assets/beach.jpg" class="d-block w-100 img-fluid" style="oject-fit:cover; height:50%;" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="assets/italie.jpg" class="d-block w-100 img-fluid" alt="...">
+            <img src="assets/italie.jpg" class="d-block w-100 img-fluid" style="oject-fit:cover; height:50%;" alt="...">
           </div>
         </div>
       </div>

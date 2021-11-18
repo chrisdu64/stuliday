@@ -20,14 +20,18 @@ include_once '_zoom-annonces.php';
         <p>Votre séjour commencera le <?php echo date('d-m-Y',strtotime($annonce['availablity']));?>.</p>
         <p>Prix du séjour : <?php echo $annonce['price']; ?>€.</p>
         <hr>
-        <div class="d-flex justify-content-between">
-        <a href="#" class="btn btn-success ">Choisir ce séjour</a>     
-        <a href="annonces.php" class="btn btn-info ">Revenir aux annonces</a>     
-        <a href="modifier-annonces.php?id=<?php echo $annonce['location_id']; ?>" class="btn btn-info ">Modifier l'annonce</a>
+        <div class="d-flex justify-content-between mt-2 ">
+        <a href="#" class="btn btn-success col-5">Choisir ce séjour</a>     
+        <a href="annonces.php" class="btn btn-info col-5">Revenir aux annonces</a>        
         </div>     
-  </div>
+        <div class="d-flex justify-content-between mt-2 ">
+        <a href="modifier-annonces.php?id=<?php echo $annonce['location_id']; ?>" class="btn btn-warning col-5">Modifier l'annonce</a>
+        <a href="delete.php?id=<?php echo $annonce['location_id']; ?>" class="btn btn-danger col-5">Supprimer l'annonce</a>
+        </div>     
+    </div>
 </div>
        
-    
+<?php
+include_once "_footer.php";
+?>   
 
-</div>
