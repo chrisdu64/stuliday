@@ -13,9 +13,9 @@ include_once '_zoom-annonces.php';
     <img src="<?php echo $annonce['image']; ?>" alt="<?php echo $annonce['type']; ?>" class="img-fluid">
     <div class="card-body">
         <h3 class="card-title"><?php echo $annonce['type'];?> pour <?php echo $annonce['capacity']; ?> personnes à <?php echo $annonce['country']?>.</h3>                
-        <p class="text-bold">Description :</p>
+        <p class="fw-bold">Description :</p>
         <p><?php echo $annonce['description']; ?></p>
-        <p>Son adressse complète est : <?php echo $annonce['location_adress'];?>.</p>
+        <p>Son adressse complète est : <?php echo $annonce['location_adress'];?></p>
         <hr>
         <p>Période du séjour: Du <?php echo date('d-m-Y',strtotime($annonce['date_start']));?> au <?php echo date('d-m-Y',strtotime($annonce['date_end']));?></p>
         <p>Prix du séjour : <?php echo $annonce['price']; ?>€.</p>

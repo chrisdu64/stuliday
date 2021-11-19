@@ -74,7 +74,7 @@ if (isset($_GET['success'])) {
         </div>
       <a class="btn btn-success col-8" href="add-annonces.php" >Publier une nouvelle annonce</a>
       <a class="btn btn-secondary col-8" href="auth-annonces.php" >Voir mes annonces()</a>
-      <a class="btn btn-primary col-8" href="#" >Voir mes réservations()</a>
+      <a class="btn btn-primary col-8 fst-italic" href="#" >Voir mes réservations (Ce mode n'est pas encore activé)</a>
       </div>
 
 
