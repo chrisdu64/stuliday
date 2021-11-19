@@ -27,13 +27,13 @@ if (isset($_GET["error"])) {
   <div class="mx-auto col-md-6">
       <div id="carouselExampleSlidesOnly" class="carousel slide w-100 my-md-5 my-3 px-3" data-bs-ride="carousel">
         <div class="carousel-inner" style="height:550px">
-          <div class="carousel-item active">
+          <div class="carousel-item active" data-bs-interval="3000">
             <img src="assets/accueil.jpg" class="d-block w-100 img-fluid" style="oject-fit:cover; height:50%;" alt="...">
           </div>
-          <div class="carousel-item ">
+          <div class="carousel-item " data-bs-interval="3000">
             <img src="assets/beach.jpg" class="d-block w-100 img-fluid" style="oject-fit:cover; height:50%;" alt="...">
           </div>
-          <div class="carousel-item">
+          <div class="carousel-item" data-bs-interval="3000">
             <img src="assets/italie.jpg" class="d-block w-100 img-fluid" style="oject-fit:cover; height:50%;" alt="...">
           </div>
         </div>

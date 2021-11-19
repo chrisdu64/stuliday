@@ -59,8 +59,12 @@ if (isset($_GET["error"])) {
             <input class="form-control" type="file" id="formFile" accept=".png,.jpg,.jpeg" name="image">
         </div>
         <div class="mb-3">
-            <label for="availablity" class="form-label">Date de début du séjour*</label>
-            <input type="date" class="form-control" id="availablity" name="availablity" required>
+            <label for="date_start" class="form-label">Date de début du séjour*</label>
+            <input type="date" class="form-control" id="date_start" name="date_start" >
+        </div>
+        <div class="mb-3">
+            <label for="date_end" class="form-label">Date de fin du séjour*</label>
+            <input type="date" class="form-control" id="date_end" name="date_end" >
         </div>
 
         <div class="mb-3">

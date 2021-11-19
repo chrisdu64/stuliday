@@ -32,7 +32,10 @@ include_once '_zoom-annonces.php';
             <textarea name="description" class="form-control" rows=3><?php echo $annonce['description']; ?></textarea>
             <hr>
             <p class="text-bold">Date du séjour :</p>
-            <input type="date" class="form-control" name="availablity" value="<?php echo $annonce['availablity']; ?>" />
+            <input type="date" class="form-control" name="date_start" value="<?php echo $annonce['date_start']; ?>" />
+            <hr>
+            <p class="text-bold">Date du séjour :</p>
+            <input type="date" class="form-control" name="date_end" value="<?php echo $annonce['date_end']; ?>" />
             <hr>
             <p class="text-bold">Prix :</p>
             <input type="number" class="form-control col-2 mb-2" name="price" value="<?php echo $annonce['price']; ?>" />

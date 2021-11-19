@@ -42,7 +42,7 @@ if (isset($_GET['success'])) {
 <section class="d-flex justify-content-around mx-auto" style="width:60%">
 <div class="mx-auto" style="width:40%">
 <form action="profil_post.php" method="POST">
-  <div class="mb-3">
+  <div class="my-3">
     <label for="lastname" class="form-label">Nom</label>
     <input type="text" class="form-control" id="lastname" name="lastname">    
   </div>

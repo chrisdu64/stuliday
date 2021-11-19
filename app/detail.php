@@ -17,7 +17,7 @@ include_once '_zoom-annonces.php';
         <p><?php echo $annonce['description']; ?></p>
         <p>Son adressse complète est : <?php echo $annonce['location_adress'];?>.</p>
         <hr>
-        <p>Votre séjour commencera le <?php echo date('d-m-Y',strtotime($annonce['availablity']));?>.</p>
+        <p>Période du séjour: Du <?php echo date('d-m-Y',strtotime($annonce['date_start']));?> au <?php echo date('d-m-Y',strtotime($annonce['date_end']));?></p>
         <p>Prix du séjour : <?php echo $annonce['price']; ?>€.</p>
         <hr>
         <div class="d-flex justify-content-between mt-2 ">
