@@ -39,6 +39,7 @@ include_once '_zoom-annonces.php';
             <hr>
             <p class="text-bold">Prix :</p>
             <input type="number" class="form-control col-2 mb-2" name="price" value="<?php echo $annonce['price']; ?>" />
+            
             <input type="hidden" name="id" value="<?php echo $annonce['location_id']; ?>">
             <button type="submit" class="btn btn-warning col-2">Modifier l'annonce</button>
         </form>

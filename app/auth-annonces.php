@@ -8,7 +8,7 @@ include_once '_view-annonces.php';
 include_once '_zoom-user.php';
 
 
-$annonces = $connexion->query("SELECT location.*,user.username FROM `location` INNER JOIN user on `auth-id` = user.id WHERE user.id <> {$_SESSION['id']}");
+$annonces = $connexion->query("SELECT location.*,user.username FROM `location` INNER JOIN user on `auth-id` = user.id WHERE user.id = {$_SESSION['id']}");
 ?>
 
 
