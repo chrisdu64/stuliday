@@ -1,6 +1,7 @@
 <?php
 
 include_once "_navbar.php";
+include_once 'includes/config.php';
 
 $alert = false;
 
@@ -42,16 +43,32 @@ if (isset($_GET["error"])) {
 
     <?php echo $alert ? "<div class='container mt-4 text-center p-2 alert alert-{$type} mt-2'>{$message}</div>" : ''; ?>
     
-
-    
-        <div class="container mt-4 text-center bg-secondary p-2 " style="--bs-bg-opacity: .25">
-        <h1 >Bienvenue sur STULIDAY !</h1>
+    <?php
+    if ($user){
+      ?>
+      
+      <div class="container mt-4 text-center bg-secondary p-2 " style="--bs-bg-opacity: .25">
+      <h1 >Bienvenue sur STULIDAY !</h1>
+        <div class="d-flex justify-content-center">
+            <a href="auth-annonces.php" >Voir mes annonces</a>
+            <p class="mx-2">ou</p>
+            <a href="annonces.php">Voir les annonces disponibles</a>
+        </div>
+    </div>
+    <?php  
+    }else{
+    ?>
+    <div class="container mt-4 text-center bg-secondary p-2 " style="--bs-bg-opacity: .25">
+      <h1 >Bienvenue sur STULIDAY !</h1>
         <div class="d-flex justify-content-center">
             <a href="sign-in.php" > Connectez-vous</a>
             <p class="mx-2">ou</p>
             <a href="sign-up.php"> Inscrivez-vous</a>
         </div>
     </div>
+    <?php
+    }
+    ?>
 
 
 
