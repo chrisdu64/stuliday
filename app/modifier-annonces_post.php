@@ -73,7 +73,11 @@ if (empty($_POST['type']) || empty($_POST['capacity']) || empty($_POST['country'
     }
 }
 if ($image) {
-    unlink($image_path);
+        if('uploads/wait.jpg' != $image_path){
+
+            unlink($image_path);
+            rmdir(dirname($imagee_path));
+        }
     $valid_ext = ['jpg', 'jpeg', 'png'];
     $check_ext = strtolower(substr(strrchr($image['name'], '.'), 1));
 
@@ -82,11 +86,11 @@ if ($image) {
         exit();
     }
 
-    $imagePath = 'uploads/'.uniqid().'/'.$image['name'];
+    $imageToUpload = 'uploads/'.uniqid().'/'.$image['name'];
 
-    mkdir(dirname($imagePath));
+    mkdir(dirname($imageToUpload));
 
-    if (!move_uploaded_file($image['tmp_name'], $imagePath)) {
+    if (!move_uploaded_file($image['tmp_name'], $imageToUpload)) {
         if (!in_array($check_ext, $valid_ext)) {
             header('Location:add-annonces.php?error=unknownError');
             exit();
@@ -102,7 +106,7 @@ $reqModifAnnonces->bindValue(':location_adress', $location_adress, PDO::PARAM_ST
 $reqModifAnnonces->bindValue(':country', $country, PDO::PARAM_STR);
 $reqModifAnnonces->bindValue(':description', $description, PDO::PARAM_STR);
 $reqModifAnnonces->bindValue(':price', $price);
-$reqModifAnnonces->bindValue(':image', $imagePath, PDO::PARAM_STR);
+$reqModifAnnonces->bindValue(':image', $imageToUpload, PDO::PARAM_STR);
 $reqModifAnnonces->bindValue(':date_start', $date_start, PDO::PARAM_STR);
 $reqModifAnnonces->bindValue(':date_end', $date_end, PDO::PARAM_STR);
 $reqModifAnnonces->bindValue(':id', $location_id);
