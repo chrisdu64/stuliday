@@ -24,6 +24,7 @@ if (empty($_POST['type']) || empty($_POST['capacity']) || empty($_POST['country'
     $price = htmlspecialchars(floatval($_POST['price']));
     $date_start = htmlspecialchars(trim($_POST['date_start']));
     $date_end = htmlspecialchars(trim($_POST['date_end']));
+    $image_path = htmlspecialchars(trim($_POST['image_path']));
     $location_id = $_POST['id'];
 
     if (!empty($_POST['location_adress'])) {
@@ -41,13 +42,55 @@ if (empty($_POST['type']) || empty($_POST['capacity']) || empty($_POST['country'
         header('Location:add-annonces.php?error=pastAvailablity');
         exit();
     }
+    if ($image) {
+    
+    $valid_ext = ['jpg', 'jpeg', 'png'];
+    $check_ext = strtolower(substr(strrchr($image['name'], '.'), 1));
+
+    if (!in_array($check_ext, $valid_ext)) {
+        header('Location:add-annonces.php?error=wrongFormat');
+        exit();
+    }
+
+    $imagePath = 'uploads/'.uniqid().'/'.$image['name'];
+
+    mkdir(dirname($imagePath));
+
+    if (!move_uploaded_file($image['tmp_name'], $imagePath)) {
+        if (!in_array($check_ext, $valid_ext)) {
+            header('Location:add-annonces.php?error=unknownError');
+            exit();
+        }
+    }
+}
 
     if (empty($_FILES['image']['name'])) {
-        $imagePath = 'uploads/wait.jpg';
+        $imageToUpload = $image_path;
         $image = null;
         
     }else {
         $image = $_FILES['image'];
+    }
+}
+if ($image) {
+    unlink($image_path);
+    $valid_ext = ['jpg', 'jpeg', 'png'];
+    $check_ext = strtolower(substr(strrchr($image['name'], '.'), 1));
+
+    if (!in_array($check_ext, $valid_ext)) {
+        header('Location:add-annonces.php?error=wrongFormat');
+        exit();
+    }
+
+    $imagePath = 'uploads/'.uniqid().'/'.$image['name'];
+
+    mkdir(dirname($imagePath));
+
+    if (!move_uploaded_file($image['tmp_name'], $imagePath)) {
+        if (!in_array($check_ext, $valid_ext)) {
+            header('Location:add-annonces.php?error=unknownError');
+            exit();
+        }
     }
 }
 
